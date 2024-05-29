@@ -1,15 +1,14 @@
-.App-header {
-    font-size: 1.4rem;
-    display: flex;
-    color: #e0354b;
-    align-items: center;
-    border-bottom: 3px solid #e0354b;
-    padding-top: 200px;
-    
-  }
-  
-  .App-header img {
-    height: 200px;
-    width: 200px;
+:root {
+  --principal-color: #e14852;
+}
 
-  }
+.App-header {
+  display: flex;
+  color: var(--principal-color);
+  align-items: center;
+}
+
+.App-header img {
+  width: 200px;
+  height: 200px;
+}

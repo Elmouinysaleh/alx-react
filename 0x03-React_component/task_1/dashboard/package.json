@@ -2,9 +2,8 @@
   "name": "dashboard",
   "version": "1.0.0",
   "description": "",
-  "main": "./src/index.js",
+  "main": "index.js",
   "scripts": {
-    "dev": "webpack serve --mode development --config config/webpack.config.js",
     "build": "webpack --mode production --config config/webpack.config.js",
     "start": "webpack serve --open --mode development --config config/webpack.config.js",
     "test": "jest",
@@ -13,34 +12,43 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "@babel/core": "^7.12.16",
-    "@babel/preset-env": "^7.12.16",
-    "@babel/preset-react": "^7.12.13",
-    "babel-loader": "^8.2.2",
-    "css-loader": "^5.0.2",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.6",
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
+    "@testing-library/user-event": "^13.1.9",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.2",
+    "chai": "^4.3.4",
+    "css-loader": "^5.2.6",
     "file-loader": "^6.2.0",
     "image-webpack-loader": "^7.0.1",
-    "jest": "^26.6.3",
-    "style-loader": "^2.0.0",
-    "webpack": "^5.22.0",
-    "webpack-cli": "^4.5.0",
+    "jest": "^27.0.6",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "style-loader": "^3.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
+    "@babel/preset-react": "^7.14.5",
+    "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "*",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "html-webpack-plugin": "^5.3.2",
+    "webpack": "^5.41.1",
+    "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2"
   },
-  "dependencies": {
-    "prop-types": "^15.7.2",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
-  },
   "jest": {
+    "verbose": true,
+    "clearMocks": true,
     "setupFiles": [
       "<rootDir>/config/setupTests.js"
     ],
     "moduleNameMapper": {
-      "\\.(css)$": "<rootDir>/__mocks__/styleMock.js",
-      "\\.(jpg|png)$": "<rootDir>/__mocks__/fileMock.js"
+      "\\.(css|sass)$": "<rootDir>/__mocks__/styleMock.js",
+      "\\.(jpg|jpeg|png|gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js"
     }
   }
 }

@@ -1,6 +1,11 @@
+:root {
+  --principal-color: #e14852;
+}
+
 .App-footer {
-    font-size: 1rem;
-    padding: 1.2rem;
-    text-align: center;
-    font-style: italic;
-  }
+  display: flex;
+  justify-content: center;
+  border-top: 4px solid var(--principal-color);
+  font-style: italic;
+  bottom: 0;
+}
