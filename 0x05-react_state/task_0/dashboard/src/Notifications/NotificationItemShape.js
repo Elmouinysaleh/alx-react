@@ -10,3 +10,4 @@ const NotificationItemShape = PropTypes.shape({
 });
 
 export default NotificationItemShape;
+

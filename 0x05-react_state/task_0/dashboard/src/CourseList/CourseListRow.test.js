@@ -1,34 +1,46 @@
-import React from "react";
-import CourseListRow from "./CourseListRow";
-import { shallow } from "enzyme";
-import { StyleSheetTestUtils } from "aphrodite";
+import React from 'react';
+import { shallow } from 'enzyme';
+import CourseListRow from './CourseListRow';
 
-beforeEach(() => {
-  StyleSheetTestUtils.suppressStyleInjection();
-});
-afterEach(() => {
-  StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
-});
-
-describe("Course List Row component test", () => {
-  it("should render without crashing", () => {
-    const wrapper = shallow(<CourseListRow textFirstCell="test" />);
-
-    expect(wrapper.exists()).toBe(true);
+describe('CourseListRow tests', () => {
+  it('renders without crashing', () => {
+    const component = shallow(<CourseListRow textFirstCell="Test" />);
+    expect(component).toBeDefined();
   });
 
-  it("should render one cell with colspan = 2 when textSecondCell null", () => {
-    const wrapper = shallow(<CourseListRow isHeader={true} textFirstCell="test" textSecondCell={null} />);
+  it('renders row with correct background color for header', () => {
+    const component = shallow(<CourseListRow isHeader textFirstCell="Header1" textSecondCell="Header2" />);
+    const tr = component.find('tr');
 
-    expect(wrapper.find("tr").children()).toHaveLength(1);
-    expect(wrapper.find("tr").childAt(0).html()).toEqual('<th colSpan="2">test</th>');
+    expect(tr.props().style.backgroundColor).toBe('#deb5b545');
   });
 
-  it("should render two cells when textSecondCell not null", () => {
-    const wrapper = shallow(<CourseListRow isHeader={false} textFirstCell="test" textSecondCell="test" />);
+  it('renders row with correct background color for non-header', () => {
+    const component = shallow(<CourseListRow textFirstCell="Cell1" textSecondCell="Cell2" />);
+    const tr = component.find('tr');
 
-    expect(wrapper.find("tr").children()).toHaveLength(2);
-    expect(wrapper.find("tr").childAt(0).html()).toEqual("<td>test</td>");
-    expect(wrapper.find("tr").childAt(1).html()).toEqual("<td>test</td>");
+    expect(tr.props().style.backgroundColor).toBe('#f5f5f5ab');
+  });
+
+  it('renders header row with colspan when textSecondCell is null', () => {
+    const component = shallow(<CourseListRow isHeader textFirstCell="Header" textSecondCell={null} />);
+    const th = component.find('th');
+
+    expect(th.props().colSpan).toBe(2);
+  });
+
+  it('renders header row with two th elements when textSecondCell is not null', () => {
+    const component = shallow(<CourseListRow isHeader textFirstCell="Header1" textSecondCell="Header2" />);
+    const th = component.find('th');
+
+    expect(th).toHaveLength(2);
+  });
+
+  it('renders non-header row with two td elements', () => {
+    const component = shallow(<CourseListRow textFirstCell="Cell1" textSecondCell="Cell2" />);
+    const td = component.find('td');
+
+    expect(td).toHaveLength(2);
   });
 });
+

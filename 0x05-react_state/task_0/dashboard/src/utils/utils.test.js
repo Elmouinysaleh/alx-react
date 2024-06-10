@@ -12,3 +12,4 @@ test("correct footer copy", () => {
 test("returns right notification", () => {
   expect(getLatestNotification()).toBe("<strong>Urgent Requirement</strong> - complete by EOD");
 });
+

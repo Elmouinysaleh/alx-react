@@ -7,3 +7,4 @@ const CourseShape = PropTypes.shape({
 });
 
 export default CourseShape;
+
